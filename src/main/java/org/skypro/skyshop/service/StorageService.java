@@ -22,6 +22,10 @@ public class StorageService {
         populate();
     }
 
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
+    }
+
     public Collection<Article> getArticles() {
         return articles.values();
     }
