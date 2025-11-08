@@ -1,7 +1,10 @@
 package org.skypro.skyshop.service;
 
 import lombok.RequiredArgsConstructor;
+import org.skypro.skyshop.exception.NoSuchProductException;
+import org.skypro.skyshop.model.basket.BasketItem;
 import org.skypro.skyshop.model.basket.ProductBasket;
+import org.skypro.skyshop.model.basket.UserBasket;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,14 +20,17 @@ public class BasketService {
 
     public void addProduct(UUID id) {
         if (storageService.getProductById(id).isEmpty()) {
-            throw new IllegalArgumentException("Товар с id = %s отсутствует.".formatted(id));
+            throw new NoSuchProductException(id);
         }
         productBasket.add(id);
     }
 
     public UserBasket getUserBasket() {
         List<BasketItem> items = productBasket.getProducts().entrySet().stream()
-                .map(e -> new BasketItem(storageService.getProductById(e.getKey()).get(), e.getValue()))
+                .map(e ->
+                        new BasketItem(storageService.getProductById(e.getKey())
+                                .orElseThrow(() -> new NoSuchProductException(e.getKey())), e.getValue())
+                )
                 .toList();
         return new UserBasket(items);
     }

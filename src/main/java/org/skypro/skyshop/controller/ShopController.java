@@ -7,7 +7,7 @@ import org.skypro.skyshop.model.search.SearchResult;
 import org.skypro.skyshop.service.BasketService;
 import org.skypro.skyshop.service.SearchService;
 import org.skypro.skyshop.service.StorageService;
-import org.skypro.skyshop.service.UserBasket;
+import org.skypro.skyshop.model.basket.UserBasket;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
