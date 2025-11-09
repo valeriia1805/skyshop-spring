@@ -1,10 +1,12 @@
 package org.skypro.skyshop.model.article;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
 import org.skypro.skyshop.model.search.Searchable;
 
 import java.util.UUID;
 
+@Getter
 public class Article implements Searchable {
 
     private String title;
