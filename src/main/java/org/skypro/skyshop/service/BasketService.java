@@ -22,7 +22,7 @@ public class BasketService {
         if (storageService.getProductById(id).isEmpty()) {
             throw new NoSuchProductException(id);
         }
-        productBasket.add(id);
+        productBasket.addProduct(id);
     }
 
     public UserBasket getUserBasket() {

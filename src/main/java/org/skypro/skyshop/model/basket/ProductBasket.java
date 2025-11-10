@@ -14,7 +14,7 @@ public class ProductBasket {
 
     private final Map<UUID, Integer> productMap = new HashMap<>();
 
-    public void add(UUID productId) {
+    public void addProduct(UUID productId) {
         productMap.compute(productId, (k, v) -> v == null ? 1 : v + 1);
     }
 

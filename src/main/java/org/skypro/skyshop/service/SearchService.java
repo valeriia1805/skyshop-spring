@@ -14,7 +14,7 @@ public class SearchService {
 
     public Collection<SearchResult> search(String query) {
         return storageService.getAll().stream()
-                .filter(x -> x.getSearchTerm().contains(query))
+                .filter(x -> x.getSearchTerm().toLowerCase().contains(query.toLowerCase()))
                 .map(SearchResult::fromSearchable)
                 .toList();
     }
